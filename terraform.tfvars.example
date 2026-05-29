@@ -1,0 +1,36 @@
+# General
+aws_region  = "ap-southeast-1"
+name        = "indico"
+environment = "production"
+
+# Networking - replace with your actual VPC and subnet IDs
+vpc_id             = "vpc-xxxxxxxxxxxxxxxx"
+public_subnet_ids  = ["subnet-xxxxxxxxxxxxxxxx", "subnet-yyyyyyyyyyyyyyyy"]
+private_subnet_ids = ["subnet-aaaaaaaaaaaaaaaaa", "subnet-bbbbbbbbbbbbbbbb"]
+
+# ECS
+container_image = "nginx:latest"
+container_port  = 80
+cpu             = 256
+memory          = 512
+desired_count   = 2
+
+# CodeBuild
+source_type     = "GITHUB"
+source_location = "https://github.com/<your-org>/<your-repo>.git"
+buildspec_path  = "buildspec.yml"
+
+# CodePipeline
+repository_name         = "<your-org>/<your-repo>"
+branch_name             = "main"
+codestar_connection_arn = "arn:aws:codestar-connections:ap-southeast-1:<account-id>:connection/<connection-id>"
+
+# Optional
+certificate_arn = null
+kms_key_arn     = null
+
+# Tags
+tags = {
+  Owner   = "<your-name>"
+  Project = "<your-project>"
+}
